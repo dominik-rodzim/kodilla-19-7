@@ -1,12 +1,15 @@
 	class Stopwatch extends React.Component {
-    constructor() {
-        running: false;
-        times: {
-            minutes: 0,
-            seconds: 0,
-            miliseconds: 0        	
-        }
-        results: []
+	  constructor(props) {
+	    super(props);
+	    this.state = {
+	        running: false,
+	        times: {
+	            minutes: 0,
+	            seconds: 0,
+	            miliseconds: 0        	
+	        },
+	        results: []
+	    };
     }
 
     reset() {
@@ -73,14 +76,18 @@
       		listResults
     	});
 	}
+
 	resetList() {
 		this.setState({
 	    	listResults: []
 	    });
-	}
+	};
+
 	  render() {
 	    const lapList = this.state.lapTimes.map(item => {
-	      return <li key={item}>{item}</li>;
+	      return (
+	      	<li key={item}>{item}</li>;
+	      )
 	    });
 	    return (
 	      <div className="<counter">
@@ -94,7 +101,7 @@
 	          <a href="#" className="button" onClick={this.reset}>
 	            Reset All
 	          </a>
-	          <a href="#" className="button" onClick={this.lapTime}>
+	          <a href="#" className="button" onClick={this.lapTime}>	
 	            Lap
 	          </a>
 	          <a href="#" className="button" onClick={this.resetLaps}>
